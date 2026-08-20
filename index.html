@@ -22,6 +22,68 @@ label{display:block;color:var(--muted);font-size:12px;margin:14px 0 7px}input,te
 .how-details{margin-top:10px}.how-details details{border:1px solid var(--line);background:#0d121a;border-radius:13px;padding:11px}.how-details summary{cursor:pointer;font-weight:800;font-size:13px}.plain-math{margin-top:10px;color:var(--muted);font-size:13px;line-height:1.5}.plain-math strong{color:var(--text)}.math-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:9px}.math-mini{background:#090e15;border:1px solid var(--line);border-radius:10px;padding:9px}.math-mini span{display:block;color:var(--muted);font-size:8px;text-transform:uppercase;letter-spacing:.07em}.math-mini strong{display:block;margin-top:4px;font-size:14px}.equations{margin-top:9px;padding:10px;background:#080c12;border-radius:10px;color:#c8dcff;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;line-height:1.7;overflow:auto}
 .result-options{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.choice{background:#111722;color:var(--muted);border:1px solid var(--line)}.choice.active{border-color:#6382b2;color:var(--text);background:#19253a}.evidence details{border:1px solid var(--line);border-radius:13px;background:#0d121a;padding:11px;margin-top:12px}.evidence summary{cursor:pointer;font-weight:780;font-size:13px}.dim{border-top:1px solid var(--line);padding-top:11px;margin-top:11px}.metric{display:grid;grid-template-columns:1.45fr .8fr;gap:9px;align-items:end;margin-top:8px}.metric small{display:block;color:var(--muted);margin-top:3px}.history{display:grid;gap:8px}.hist{border:1px solid var(--line);border-radius:13px;padding:12px;background:#0d121a}.hist-head{display:flex;justify-content:space-between;gap:8px}.hist p{color:var(--muted);margin:6px 0 0;font-size:12px}.signal{font-size:11px;font-weight:800}.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}.chart{height:160px;width:100%;display:block;background:#0d121a;border:1px solid var(--line);border-radius:13px;margin-top:10px}.avatar-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.avatar-option{background:#0d121a;border:1px solid var(--line);color:var(--muted);border-radius:11px;padding:10px;font-weight:800;cursor:pointer}.avatar-option.active{border-color:#7ea6e8;background:#172238;color:var(--text)}.wizard-step{display:none}.wizard-step.active{display:block}.dimension-prompt{margin-top:12px;padding:13px;border:1px solid var(--line);background:#0d121a;border-radius:13px}.dimension-prompt strong{display:block;margin-bottom:5px}.dimension-prompt textarea{min-height:68px}.distance-row{margin-top:14px;padding:13px;border:1px solid var(--line);background:#0d121a;border-radius:13px}.distance-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.distance-head small{display:block;color:var(--muted);margin-top:4px;line-height:1.4}.distance-scale{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;margin-top:5px}.setup-note{padding:12px;border:1px solid #384861;background:#101a28;border-radius:13px;color:#c8d5e8;font-size:13px;line-height:1.5}.orientation{background:linear-gradient(145deg,#101927,#0d121a);border:1px solid #30415a}.orientation ol{padding-left:20px;color:var(--muted);line-height:1.6}.orientation b{color:var(--text)}
 @media(max-width:600px){.app{max-width:none;padding:10px 11px calc(76px + env(safe-area-inset-bottom))}.brand h1{font-size:22px}.brand p{display:none}.top .secondary{padding:8px 10px;font-size:12px}.card{padding:14px;border-radius:16px;margin-top:9px;box-shadow:none}.hero{padding:14px}.hero h2{font-size:21px;margin:5px 0}.hero p,.sub{font-size:13px}.daily-track{gap:5px}.phase-btn{padding:9px 7px;border-radius:11px}.phase-btn span{font-size:7px}.phase-btn strong{font-size:11px}.convergence-visual{height:172px;margin:8px 0}.convergence-visual:before{top:58%}.path-dot{top:calc(58% - 3px)}.person-wrap{top:17px}.person{width:48px;height:72px}.person-future .person{width:55px;height:80px}.visual-score{bottom:8px}.visual-score strong{font-size:24px}.visual-score span{font-size:9px}.primary.big{padding:13px;font-size:15px}.today-action{padding:10px}.math-grid{grid-template-columns:repeat(3,1fr);gap:5px}.math-mini{padding:7px 5px}.math-mini strong{font-size:12px}.prompt{font-size:20px}.timer{width:64px;height:64px}.metric{grid-template-columns:1fr}.nav{position:fixed;left:9px;right:9px;bottom:calc(7px + env(safe-area-inset-bottom));margin:0;padding:5px}.nav button{padding:9px 4px;font-size:11px}input,textarea,select{font-size:16px}.result-options{gap:5px}.choice{padding:11px 8px;font-size:12px}}
+
+/* v15 mobile UI pass */
+.mobile-stepbar{display:none}
+@media(max-width:600px){
+  body{background-attachment:scroll}
+  .app{padding:8px 10px calc(88px + env(safe-area-inset-bottom))}
+  .top{position:sticky;top:0;z-index:30;margin:0 -10px;padding:9px 10px;background:rgba(9,12,18,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.05)}
+  .brand h1{font-size:20px}.top .secondary{min-height:38px}
+  .card{padding:13px;border-radius:15px;margin-top:8px}
+  .hero{padding:13px}
+  .hero h2{font-size:20px;line-height:1.1}
+  .hero p,.sub{font-size:13px;line-height:1.4}
+  .eyebrow{font-size:9px}
+  .daily-track{grid-template-columns:repeat(3,1fr);gap:5px;margin:9px 0}
+  .phase-btn{min-height:56px;padding:8px 7px}
+  .phase-btn span{font-size:7px}.phase-btn strong{font-size:11px}
+  .convergence-visual{height:158px;border-radius:14px}
+  .person-wrap{top:14px}.person{width:43px;height:66px}.person-future .person{width:49px;height:72px}
+  .visual-score strong{font-size:22px}.visual-score span{font-size:9px}
+  .primary.big{position:sticky;bottom:76px;z-index:12;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  .primary,.secondary,.ghost,.choice,.phase-btn{min-height:44px}
+  .nav{left:8px;right:8px;bottom:calc(7px + env(safe-area-inset-bottom));border-radius:14px}
+  .nav button{min-height:44px;font-size:11px}
+  .prompt{font-size:19px;line-height:1.15}
+  .quote{font-size:13px;margin:10px 0;padding-left:10px}
+  .timer{width:58px;height:58px;font-size:16px;margin:10px auto}
+  label{font-size:12px;margin:12px 0 6px}
+  textarea{min-height:76px}
+  input,textarea,select{border-radius:11px;padding:11px}
+  .actions{display:grid;grid-template-columns:1fr;gap:8px}
+  .actions .primary,.actions .secondary,.actions .ghost{width:100%}
+  .result-options{grid-template-columns:1fr 1fr 1fr;gap:5px}
+  .choice{padding:10px 6px;font-size:12px}
+  .wizard-step .section-title{font-size:21px}
+  .dimension-prompt,.distance-row{padding:11px;border-radius:12px;margin-top:9px}
+  .dimension-prompt textarea{min-height:72px}
+  .distance-head{gap:8px}
+  .distance-head strong{font-size:14px}
+  .distance-head small{font-size:11px}
+  .distance-row input[type="range"]{padding:0;margin-top:12px;min-height:28px}
+  .distance-scale{font-size:9px}
+  .setup-note{font-size:12px;padding:10px}
+  .how-details summary{font-size:12px}
+  .plain-math{font-size:12px;line-height:1.45}
+  .equations{font-size:11px;line-height:1.55}
+  .history .hist{padding:10px}
+  .history .hist p{font-size:11px}
+  .chart{height:130px}
+}
+
+
+/* v16 interaction feedback */
+button{transition:transform .12s ease,opacity .15s ease,background .15s ease,border-color .15s ease}
+button:active{transform:scale(.985)}
+button.is-working{opacity:.7;pointer-events:none}
+button.is-done{background:#173224!important;color:#aee8c1!important;border-color:#3c6b4f!important}
+.wizard-step.entering{animation:panelIn .22s ease both}
+@keyframes panelIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.card.flash{animation:cardFlash .35s ease}
+@keyframes cardFlash{0%{box-shadow:0 0 0 rgba(138,180,255,0)}45%{box-shadow:0 0 0 3px rgba(138,180,255,.28)}100%{box-shadow:0 12px 32px rgba(0,0,0,.2)}}
+.action-feedback{margin-top:8px;min-height:16px;color:var(--good);font-size:12px;font-weight:800}
+
 </style>
 </head>
 <body>
@@ -93,7 +155,7 @@ label{display:block;color:var(--muted);font-size:12px;margin:14px 0 7px}input,te
   <section id="setup" class="pane">
     <div class="card">
       <div id="futureStep" class="wizard-step active">
-        <div class="eyebrow">Step 1 · Define the end</div>
+        <div class="eyebrow">Step 1 of 2 · Define the end</div>
         <h2 class="section-title" style="margin-top:7px">Future You · D*</h2>
         <p class="sub">Imagine that the change is already true. Stay in the fulfilled state here. Describe the ordinary life of the person for whom this is normal—not how you get there and not where you are today.</p>
         <div class="quote">“Don't imagine Future You from the outside. Look through their eyes.”</div>
@@ -102,16 +164,16 @@ label{display:block;color:var(--muted);font-size:12px;margin:14px 0 7px}input,te
         <label>What has become normal?</label><textarea id="futureNormal" placeholder="What does an ordinary Tuesday look and feel like from this state?"></textarea>
         <div id="futureDimensionInputs"></div>
         <div class="setup-note" style="margin-top:12px">Keep D* reasonably stable during an experiment cycle. You can refine it, but constantly moving the destination makes convergence impossible to measure.</div>
-        <div class="actions"><button class="primary" id="continueBaseline">Continue · Establish Today</button></div>
+        <div class="actions"><button class="primary big" id="continueBaseline">Continue to Today →</button></div><div id="futureFeedback" class="action-feedback"></div>
       </div>
 
       <div id="baselineStep" class="wizard-step">
-        <div class="eyebrow">Step 2 · Establish today</div>
+        <div class="eyebrow">Step 2 of 2 · Establish today</div>
         <h2 class="section-title" style="margin-top:7px">Where are you starting?</h2>
-        <p class="sub">Now come back to today. You have defined the state you're moving toward. For each dimension, estimate how much of that specific state is already true in your life. This is a baseline, not a grade.</p>
+        <p class="sub">Come back to today. For each part of D*, mark how much of that specific state is already true. This is your starting point—not a grade.</p>
         <div class="quote">Far means there is a large gap between today and the state you described. Already true means this part of Future You is substantially present now.</div>
         <div id="baselineInputs"></div>
-        <div class="actions"><button class="secondary" id="backToFuture">← Refine Future You</button><button class="primary" id="saveSetup">Save baseline & begin</button><button class="secondary" id="exportBtn">Export data</button></div>
+        <div class="actions"><button class="secondary" id="backToFuture">← Refine Future You</button><button class="primary big" id="saveSetup">Save & Start Day 1</button><button class="secondary" id="exportBtn">Export data</button></div><div id="baselineFeedback" class="action-feedback"></div>
       </div>
     </div>
   </section>
@@ -158,6 +220,11 @@ function load(){
 }
 let state=load();
 function save(){localStorage.setItem(KEY,JSON.stringify(state));$('#saved').classList.add('show');setTimeout(()=>$('#saved').classList.remove('show'),800)}
+function buttonWorking(btn,label){if(!btn)return;btn.classList.add('is-working');btn.disabled=true;if(label)btn.textContent=label}
+function buttonDone(btn,label){if(!btn)return;btn.classList.remove('is-working');btn.classList.add('is-done');btn.disabled=true;if(label)btn.textContent=label}
+function flashCard(el){if(!el)return;el.classList.add('flash');setTimeout(()=>el.classList.remove('flash'),420)}
+function goHomeWithFeedback(){showPane('home');renderHome();flashCard($('#todayCard'));window.scrollTo({top:0,behavior:'smooth'})}
+
 function dateOrdinal(key){if(!key)return null;const [y,m,d]=key.split('-').map(Number);return Date.UTC(y,m-1,d)/86400000}
 function experimentDayNumber(){if(!state.experimentStart)return 1;return Math.max(1,Math.floor(dateOrdinal(today())-dateOrdinal(state.experimentStart))+1)}
 function archivePreviousDay(){
@@ -204,21 +271,54 @@ function protocol(){ensureCurrentDay();return state.dayProtocol}
 function practiceCount(p=protocol()){return ['morning','noon','evening'].filter(k=>p[k]?.done).length}
 function nextPhase(){const p=protocol();if(!p.morning?.done)return'morning';if(!p.noon?.done)return'noon';if(!p.evening?.done)return'evening';return'complete'}
 function showPane(id){$$('.pane').forEach(p=>p.classList.toggle('active',p.id===id));$$('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.pane===id));if(id==='practice')renderPractice();if(id==='history')renderHistory();if(id==='setup'){renderSetup();showSetupStep('future')}}
-$$('.nav button').forEach(b=>b.onclick=()=>showPane(b.dataset.pane));
+$$('.nav button').forEach(b=>b.onclick=()=>{showPane(b.dataset.pane);window.scrollTo({top:0,behavior:'smooth'});flashCard($('#'+b.dataset.pane)?.querySelector('.card'))});
 function setStatus(id,done,current){const el=$(id);el.classList.toggle('done',done);el.classList.toggle('current',current)}
-function renderHome(){const configured=!!state.description.trim();$('#orientationCard').style.display=configured?'none':'block';$('#todayCard').style.display=configured?'block':'none';if(!configured)return;const p=protocol(),phase=nextPhase(),count=practiceCount(p),hasEvidence=Object.keys(state.latest).length>0,c=calc(),pct=hasEvidence?c.convergence*100:null;$('#convergence').textContent=pct===null?'—':pct.toFixed(0)+'%';$('#distanceValue').textContent=pct===null?'—':c.distance.toFixed(1);$('#practiceScore').textContent=count+' / 3';const left=pct===null?10:Math.max(10,Math.min(84,10+pct*.74));$('#currentPerson').style.left=left+'%';const hist=scoredHistory();let delta=null;if(hist.length>1){delta=(hist.at(-1).convergence-hist.at(-2).convergence)*100;$('#trajectory').textContent=delta>.2?'Closer ↑':delta<-.2?'Farther ↓':'Flat →';$('#trajectory').className=delta>.2?'good':delta<-.2?'bad':'warn'}else{$('#trajectory').textContent='No trend';$('#trajectory').className=''}$('#weeklyDelta').textContent=delta===null?'':`${delta>=0?'+':''}${delta.toFixed(1)}% since last observation`;$('#weeklyDelta').className='visual-delta '+(delta>0?'good':delta<0?'bad':'warn');$('#visualMessage').textContent=pct===null?'Set your starting point to place You Now':pct>=90?'Very close to the state you defined':pct>=70?'Your measured state is getting closer':pct>=45?'You are moving through the gap':'The gap is still substantial';setStatus('#morningStatus',!!p.morning?.done,phase==='morning');setStatus('#noonStatus',!!p.noon?.done,phase==='noon');setStatus('#eveningStatus',!!p.evening?.done,phase==='evening');let title,copyText,btn;if(phase==='morning'){title='Morning · Assume';copyText='Enter the fulfilled state. Imagine from Future You, then choose today’s action from there.';btn='Begin Morning · Assume'}else if(phase==='noon'){title='Noon · Abide';copyText='Return to the state after the day has begun. Stay the course or correct it.';btn='Begin Noon · Abide'}else if(phase==='evening'){title='Evening · Observe';copyText='Return once more, then record the fruit: what you did, what happened and what changed.';btn='Begin Evening · Observe'}else{title='Today is complete';copyText='You completed all three moments. Your practice and your measured result are stored separately.';btn='View Today’s Observation'}$('#heroTitle').textContent=title;$('#heroCopy').textContent=copyText;const dayNum=experimentDayNumber();$('#phaseLabel').textContent=phase==='complete'?`DAY ${dayNum} · COMPLETE`:`DAY ${dayNum} · `+(phase==='morning'?'ASSUME':phase==='noon'?'ABIDE':'OBSERVE');$('#mainAction').textContent=btn;$('#mainAction').onclick=()=>{if(phase==='complete')showPane('history');else{showPane('practice');renderPractice(phase)}};const act=p.noon?.action||p.morning?.action;$('#todayAction').innerHTML=act?`<div class="today-action"><span>Today’s action</span><strong>${esc(act)}</strong></div>`:''}
+function renderHome(){const configured=!!state.description.trim()&&Object.keys(state.baseline||{}).length===state.model.length;$('#orientationCard').style.display=configured?'none':'block';$('#todayCard').style.display=configured?'block':'none';if(!configured)return;const p=protocol(),phase=nextPhase(),count=practiceCount(p),hasEvidence=Object.keys(state.latest).length>0,c=calc(),pct=hasEvidence?c.convergence*100:null;$('#convergence').textContent=pct===null?'—':pct.toFixed(0)+'%';$('#distanceValue').textContent=pct===null?'—':c.distance.toFixed(1);$('#practiceScore').textContent=count+' / 3';const left=pct===null?10:Math.max(10,Math.min(84,10+pct*.74));$('#currentPerson').style.left=left+'%';const hist=scoredHistory();let delta=null;if(hist.length>1){delta=(hist.at(-1).convergence-hist.at(-2).convergence)*100;$('#trajectory').textContent=delta>.2?'Closer ↑':delta<-.2?'Farther ↓':'Flat →';$('#trajectory').className=delta>.2?'good':delta<-.2?'bad':'warn'}else{$('#trajectory').textContent='No trend';$('#trajectory').className=''}$('#weeklyDelta').textContent=delta===null?'':`${delta>=0?'+':''}${delta.toFixed(1)}% since last observation`;$('#weeklyDelta').className='visual-delta '+(delta>0?'good':delta<0?'bad':'warn');$('#visualMessage').textContent=pct===null?'Set your starting point to place You Now':pct>=90?'Very close to the state you defined':pct>=70?'Your measured state is getting closer':pct>=45?'You are moving through the gap':'The gap is still substantial';setStatus('#morningStatus',!!p.morning?.done,phase==='morning');setStatus('#noonStatus',!!p.noon?.done,phase==='noon');setStatus('#eveningStatus',!!p.evening?.done,phase==='evening');let title,copyText,btn;if(phase==='morning'){title='Morning · Assume';copyText='Enter the fulfilled state. Imagine from Future You, then choose today’s action from there.';btn='Begin Morning · Assume'}else if(phase==='noon'){title='Noon · Abide';copyText='Return to the state after the day has begun. Stay the course or correct it.';btn='Begin Noon · Abide'}else if(phase==='evening'){title='Evening · Observe';copyText='Return once more, then record the fruit: what you did, what happened and what changed.';btn='Begin Evening · Observe'}else{title='Today is complete';copyText='You completed all three moments. Your practice and your measured result are stored separately.';btn='View Today’s Observation'}$('#heroTitle').textContent=title;$('#heroCopy').textContent=copyText;const dayNum=experimentDayNumber();$('#phaseLabel').textContent=phase==='complete'?`DAY ${dayNum} · COMPLETE`:`DAY ${dayNum} · `+(phase==='morning'?'ASSUME':phase==='noon'?'ABIDE':'OBSERVE');$('#mainAction').textContent=btn;$('#mainAction').onclick=()=>{if(phase==='complete')showPane('history');else{showPane('practice');renderPractice(phase)}};const act=p.noon?.action||p.morning?.action;$('#todayAction').innerHTML=act?`<div class="today-action"><span>Today’s action</span><strong>${esc(act)}</strong></div>`:''}
 function guidedTimer(seconds,button,display){clearInterval(timerId);let left=seconds;display.textContent=left+'s';button.disabled=true;button.textContent='Stay here…';display.classList.add('running');timerId=setInterval(()=>{left--;display.textContent=left+'s';if(left<=0){clearInterval(timerId);display.textContent='Ready';display.classList.remove('running');button.disabled=false;button.textContent='Continue'}},1000)}
 function renderPractice(force){const phase=force||nextPhase(),p=protocol();if(phase==='complete'){showPane('home');return}let html='';if(phase==='morning')html=`<div class="stepcount">Morning · Assume</div><div class="prompt">Enter the fulfilled state.</div><p class="sub">Close your eyes. Don’t watch Future You from the outside. Look through their eyes. For this exercise, your desired state is already normal.</p><div class="quote">What do you see? What no longer worries you? How do you carry yourself? What are you responsible for now?</div><div class="timer" id="phaseTimer">60s</div><button class="secondary" id="startTimer">Start 60 seconds</button><label>From this state, what do you do today?</label><textarea id="morningAction" placeholder="One concrete, observable action."></textarea><label>What stood out from the state?</label><textarea id="morningNote" placeholder="Optional. A sentence is enough."></textarea><div class="actions"><button class="primary" id="saveMorning">Set today’s direction</button></div>`;
 if(phase==='noon')html=`<div class="stepcount">Noon · Abide</div><div class="prompt">Return to the state.</div><p class="sub">The day has had time to pull you into old reactions. For 30 seconds, return to the perspective you assumed this morning.</p><div class="quote">If the fulfilled state were already true, how would you handle the rest of this day?</div><div class="timer" id="phaseTimer">30s</div><button class="secondary" id="startTimer">Start 30 seconds</button><label>Are you still acting from that state?</label><div class="result-options" id="courseChoices"><button class="choice" data-value="Stay">Stay course</button><button class="choice" data-value="Adjust">Adjust course</button><button class="choice" data-value="Unsure">Unsure</button></div><label>What does Future You do next?</label><textarea id="noonAction" placeholder="Keep the morning action, or write the correction.">${esc(p.morning?.action||'')}</textarea><div class="actions"><button class="primary" id="saveNoon">Set the afternoon direction</button></div>`;
 if(phase==='evening')html=`<div class="stepcount">Evening · Observe</div><div class="prompt">Record the fruit.</div><p class="sub">Enter the state one final time, then come back to the facts. Record reality before interpreting it.</p><div class="timer" id="phaseTimer">30s</div><button class="secondary" id="startTimer">Start 30 seconds</button><div class="today-action"><span>Today’s final direction</span><strong>${esc(p.noon?.action||p.morning?.action||'')}</strong></div><label>Did you act on it?</label><div class="result-options" id="doneChoices"><button class="choice" data-value="Yes">Yes</button><button class="choice" data-value="Partly">Partly</button><button class="choice" data-value="No">No</button></div><label>What was the observable result?</label><div class="result-options" id="outcomeChoices"><button class="choice" data-value="Positive">Positive</button><button class="choice" data-value="Neutral">Neutral</button><button class="choice" data-value="Negative">Negative</button></div><label>What actually happened?</label><textarea id="result" placeholder="What happened in the real world? Revenue, response, work completed, family time protected, obstacle found, etc."></textarea><label>Revision — optional</label><textarea id="revision" placeholder="Is there one moment you would rehearse differently before tomorrow? This does not rewrite the historical record."></textarea><div class="evidence"><details><summary>Update measurable evidence</summary><p class="tiny">Only change what actually changed. This evidence—not practice completion—moves the Convergence score.</p><div id="metricInputs"></div></details></div><div class="actions"><button class="primary" id="saveEvening">Save observation</button></div>`;
-$('#practiceCard').innerHTML=html;const timer=$('#phaseTimer'),start=$('#startTimer');if(start)start.onclick=()=>guidedTimer(phase==='morning'?60:30,start,timer);if(phase==='morning')$('#saveMorning').onclick=()=>{const action=$('#morningAction').value.trim();if(!action){alert('Choose one concrete action before continuing.');return}state.dayProtocol={date:today(),morning:{done:true,action,note:$('#morningNote').value.trim(),at:new Date().toISOString()}};state.morning={date:today(),action,vision:$('#morningNote').value.trim(),locked:true};save();renderAll();showPane('home')};if(phase==='noon'){let course='';$$('#courseChoices .choice').forEach(b=>b.onclick=()=>{course=b.dataset.value;$$('#courseChoices .choice').forEach(x=>x.classList.toggle('active',x===b))});$('#saveNoon').onclick=()=>{const action=$('#noonAction').value.trim()||p.morning?.action;if(!course){alert('Choose Stay course, Adjust course, or Unsure.');return}state.dayProtocol={...p,date:today(),noon:{done:true,course,action,at:new Date().toISOString()}};save();renderAll();showPane('home')}}if(phase==='evening'){renderMetricInputs();let done='',outcome='';$$('#doneChoices .choice').forEach(b=>b.onclick=()=>{done=b.dataset.value;$$('#doneChoices .choice').forEach(x=>x.classList.toggle('active',x===b))});$$('#outcomeChoices .choice').forEach(b=>b.onclick=()=>{outcome=b.dataset.value;$$('#outcomeChoices .choice').forEach(x=>x.classList.toggle('active',x===b))});$('#saveEvening').onclick=()=>{if(!done||!outcome){alert('Record whether you acted and the observable result.');return}$$('.metricValue').forEach(x=>{if(x.value!=='')state.latest[x.dataset.id]=Math.max(0,Number(x.value)||0)});const c=calc(),pp=protocol(),entry={date:today(),action:pp.noon?.action||pp.morning?.action||'',morningAction:pp.morning?.action||'',noonCourse:pp.noon?.course||'',practiceCount:2,result:$('#result').value.trim(),revision:$('#revision').value.trim(),done,outcome,values:copy(state.latest),convergence:c.convergence,distance:c.distance};state.dayProtocol={...pp,date:today(),evening:{done:true,at:new Date().toISOString(),outcome}};entry.practiceCount=practiceCount(state.dayProtocol);const i=state.history.findIndex(h=>h.date===today()&&!h.legacyV2);i>=0?state.history[i]=entry:state.history.push(entry);state.history.sort((a,b)=>(a.date||'').localeCompare(b.date||''));save();renderAll();showPane('home')}}}
+$('#practiceCard').innerHTML=html;const timer=$('#phaseTimer'),start=$('#startTimer');if(start)start.onclick=()=>guidedTimer(phase==='morning'?60:30,start,timer);if(phase==='morning')$('#saveMorning').onclick=()=>{const btn=$('#saveMorning'),action=$('#morningAction').value.trim();if(!action){alert('Choose one concrete action before continuing.');return}buttonWorking(btn,'Saving direction…');state.dayProtocol={date:today(),morning:{done:true,action,note:$('#morningNote').value.trim(),at:new Date().toISOString()}};state.morning={date:today(),action,vision:$('#morningNote').value.trim(),locked:true};save();buttonDone(btn,'Direction set ✓');setTimeout(()=>{renderAll();goHomeWithFeedback()},220)};if(phase==='noon'){let course='';$$('#courseChoices .choice').forEach(b=>b.onclick=()=>{course=b.dataset.value;$$('#courseChoices .choice').forEach(x=>x.classList.toggle('active',x===b))});$('#saveNoon').onclick=()=>{const btn=$('#saveNoon'),action=$('#noonAction').value.trim()||p.morning?.action;if(!course){alert('Choose Stay course, Adjust course, or Unsure.');return}buttonWorking(btn,'Saving course…');state.dayProtocol={...p,date:today(),noon:{done:true,course,action,at:new Date().toISOString()}};save();buttonDone(btn,'Course saved ✓');setTimeout(()=>{renderAll();goHomeWithFeedback()},220)}}if(phase==='evening'){renderMetricInputs();let done='',outcome='';$$('#doneChoices .choice').forEach(b=>b.onclick=()=>{done=b.dataset.value;$$('#doneChoices .choice').forEach(x=>x.classList.toggle('active',x===b))});$$('#outcomeChoices .choice').forEach(b=>b.onclick=()=>{outcome=b.dataset.value;$$('#outcomeChoices .choice').forEach(x=>x.classList.toggle('active',x===b))});$('#saveEvening').onclick=()=>{const btn=$('#saveEvening');if(!done||!outcome){alert('Record whether you acted and the observable result.');return}buttonWorking(btn,'Saving observation…');$$('.metricValue').forEach(x=>{if(x.value!=='')state.latest[x.dataset.id]=Math.max(0,Number(x.value)||0)});const c=calc(),pp=protocol(),entry={date:today(),action:pp.noon?.action||pp.morning?.action||'',morningAction:pp.morning?.action||'',noonCourse:pp.noon?.course||'',practiceCount:2,result:$('#result').value.trim(),revision:$('#revision').value.trim(),done,outcome,values:copy(state.latest),convergence:c.convergence,distance:c.distance};state.dayProtocol={...pp,date:today(),evening:{done:true,at:new Date().toISOString(),outcome}};entry.practiceCount=practiceCount(state.dayProtocol);const i=state.history.findIndex(h=>h.date===today()&&!h.legacyV2);i>=0?state.history[i]=entry:state.history.push(entry);state.history.sort((a,b)=>(a.date||'').localeCompare(b.date||''));save();buttonDone(btn,'Observation saved ✓');setTimeout(()=>{renderAll();goHomeWithFeedback()},260)}}}
 function renderMetricInputs(){let html='<p class="tiny">Only update a dimension if something actually changed today. Record what happened above first.</p>';state.model.forEach((d,i)=>{const v=state.latest[i]??state.baseline[i]??5;html+=`<div class="dim"><strong>${d.name}</strong><small style="display:block;color:var(--muted);margin-top:4px">${d.description}</small><div class="metric"><div>Where are you now?<small>0 = far from the state · 10 = living it</small></div><input class="metricValue" data-id="${i}" type="range" min="0" max="10" step="1" value="${v}" oninput="this.nextElementSibling.textContent=this.value+'/10'"><strong>${v}/10</strong></div></div>`});$('#metricInputs').innerHTML=html}
 function renderSetup(){renderAvatar();$('#futureDescription').value=state.description||'';$('#futureNormal').value=state.futureNormal||'';let futureHtml='';state.model.forEach((d,i)=>{futureHtml+=`<div class="dimension-prompt"><strong>${d.name}</strong><small style="display:block;color:var(--muted);line-height:1.4">${d.description}</small><label>What does this look like as Future You?</label><textarea class="futureDimension" data-i="${i}" placeholder="${d.name==='Provision'?'What is financially normal and secure?':d.name==='Relationships'?'How do the relationships that matter feel and function?':d.name==='Purpose'?'What meaningful work or contribution is normal?':d.name==='Body & Energy'?'How do you feel and live in your body?':'How do you think, believe and carry yourself?'}">${esc(d.future||'')}</textarea></div>`});$('#futureDimensionInputs').innerHTML=futureHtml;let baseHtml='';state.model.forEach((d,i)=>{const v=state.baseline[i]??5;baseHtml+=`<div class="distance-row"><div class="distance-head"><div><strong>${d.name}</strong><small>${esc(d.future||'Define this part of Future You in Step 1.')}</small></div><strong class="baselineLabel">${v===10?'Already true':v===0?'Far':v+'/10'}</strong></div><input class="baselineValue" data-i="${i}" type="range" min="0" max="10" step="1" value="${v}" oninput="this.parentElement.querySelector('.baselineLabel').textContent=this.value==10?'Already true':this.value==0?'Far':this.value+'/10'"><div class="distance-scale"><span>Far from this state</span><span>Already true</span></div></div>`});$('#baselineInputs').innerHTML=baseHtml}
 $$('.avatar-option').forEach(b=>b.onclick=()=>{state.avatar=b.dataset.avatar;save();renderAvatar()});
-function showSetupStep(step){$('#futureStep').classList.toggle('active',step==='future');$('#baselineStep').classList.toggle('active',step==='baseline');if(step==='baseline')renderSetup()}
-$('#continueBaseline').onclick=()=>{state.description=$('#futureDescription').value.trim();state.futureNormal=$('#futureNormal').value.trim();$$('.futureDimension').forEach(x=>state.model[+x.dataset.i].future=x.value.trim());if(!state.description){alert('Describe what is true in the fulfilled state before establishing today.');return}save();renderSetup();showSetupStep('baseline')};
+function showSetupStep(step){
+  const future=$('#futureStep'),baseline=$('#baselineStep');
+  future.classList.toggle('active',step==='future');
+  baseline.classList.toggle('active',step==='baseline');
+  const active=step==='future'?future:baseline;
+  active.classList.add('entering');
+  setTimeout(()=>active.classList.remove('entering'),260);
+  setTimeout(()=>active.scrollIntoView({behavior:'smooth',block:'start'}),40);
+}
+$('#continueBaseline').onclick=()=>{
+  const btn=$('#continueBaseline');
+  state.description=$('#futureDescription').value.trim();
+  state.futureNormal=$('#futureNormal').value.trim();
+  $$('.futureDimension').forEach(x=>state.model[+x.dataset.i].future=x.value.trim());
+  if(!state.description){alert('Describe what is true in the fulfilled state before establishing today.');return}
+  buttonWorking(btn,'Saving Future You…');
+  $('#futureFeedback').textContent='Future You saved ✓';
+  save();
+  renderSetup();
+  setTimeout(()=>{showSetupStep('baseline')},180);
+};
 $('#backToFuture').onclick=()=>showSetupStep('future');
-$('#saveSetup').onclick=()=>{$$('.baselineValue').forEach(x=>{state.baseline[x.dataset.i]=Number(x.value);state.latest[x.dataset.i]=Number(x.value)});if(!state.experimentStart)state.experimentStart=today();state.dayProtocol={date:today()};save();renderAll();showSetupStep('future');showPane('home')};
+$('#saveSetup').onclick=()=>{
+  const btn=$('#saveSetup'),values=$$('.baselineValue');
+  if(!values.length){alert('Baseline controls were not loaded. Return to Step 1 and try again.');return}
+  buttonWorking(btn,'Saving baseline…');
+  values.forEach(x=>{
+    state.baseline[x.dataset.i]=Number(x.value);
+    state.latest[x.dataset.i]=Number(x.value);
+  });
+  if(!state.experimentStart)state.experimentStart=today();
+  state.dayProtocol={date:today()};
+  save();
+  $('#baselineFeedback').textContent='Baseline saved ✓ Starting your experiment…';
+  buttonDone(btn,'Baseline saved ✓');
+  setTimeout(goHomeWithFeedback,320);
+};
 $('#defineFutureBtn').onclick=()=>showPane('setup');
 $('#morningStatus').onclick=()=>{showPane('practice');renderPractice('morning')};$('#noonStatus').onclick=()=>{showPane('practice');renderPractice('noon')};$('#eveningStatus').onclick=()=>{showPane('practice');renderPractice('evening')};
 function renderHistory(){const hist=state.history.slice().reverse();$('#historyList').innerHTML=hist.length?hist.map(h=>`<div class="hist"><div class="hist-head"><strong>${esc(h.date||'')}</strong><span class="signal ${h.outcome==='Positive'?'good':h.outcome==='Negative'?'bad':'warn'}">${esc(h.incomplete?'Incomplete':(h.outcome||(h.legacyV2||h.legacyV3?'Legacy':'—')))}</span></div><div style="margin-top:6px">${esc(h.action||'Observation')}</div><p>${esc(h.result||'')}</p>${Number.isFinite(h.convergence)?`<p>Convergence ${(h.convergence*100).toFixed(1)}% · Practice ${h.practiceCount??'—'}/3</p>`:''}${h.revision?`<p>Revision: ${esc(h.revision)}</p>`:''}</div>`).join(''):'<div class="sub">No observations yet.</div>';drawChart(scoredHistory())}
