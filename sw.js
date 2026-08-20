@@ -1,4 +1,4 @@
-const CACHE='convergence-pwa-v9';
+const CACHE='convergence-pwa-v10';
 
 const ASSETS=[
   './',
