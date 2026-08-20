@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Convergence</title>
+<meta name="theme-color" content="#090c12" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Convergence" />
+<link rel="manifest" href="./manifest.webmanifest" />
+<link rel="apple-touch-icon" href="./icon-192.png" />
+<style>
+:root{--bg:#090c12;--panel:#121722;--panel2:#0e131c;--muted:#8f9bad;--text:#f5f7fb;--line:#252d3b;--accent:#8ab4ff;--good:#79d99b;--bad:#ff8e8e;--warn:#f3cd73}
+*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at top,#121a28 0,#090c12 44%);color:var(--text);min-height:100vh}.app{max-width:760px;margin:auto;padding:22px 16px calc(88px + env(safe-area-inset-bottom))}.top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.brand h1{margin:0;font-size:30px}.brand p{margin:6px 0 0;color:var(--muted);font-size:14px}.tiny{font-size:11px;color:var(--muted)}
+.card{background:rgba(18,23,34,.98);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 12px 32px rgba(0,0,0,.22);margin-top:14px}.hero{padding:22px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.13em;color:var(--muted);font-weight:800}.hero h2{font-size:25px;margin:8px 0}.hero p{color:var(--muted);line-height:1.45;margin:0 0 18px}.primary,.secondary,.ghost,.choice{border:0;border-radius:13px;padding:13px 15px;font-weight:800;font:inherit;cursor:pointer}.primary{background:var(--accent);color:#07111f}.secondary{background:#202838;color:var(--text)}.ghost{background:transparent;border:1px solid var(--line);color:var(--muted)}.primary.big{width:100%;font-size:17px;padding:15px}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.stat{background:#0d121a;border:1px solid var(--line);border-radius:15px;padding:13px}.stat span{display:block;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.stat strong{display:block;font-size:20px;margin-top:6px}.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+.nav{display:flex;gap:7px;position:sticky;bottom:10px;z-index:5;margin-top:20px;background:rgba(9,12,18,.88);backdrop-filter:blur(12px);padding:7px;border:1px solid var(--line);border-radius:16px}.nav button{flex:1;background:transparent;border:0;color:var(--muted);padding:11px;border-radius:11px;font-weight:750}.nav button.active{background:#1b2331;color:var(--text)}.pane{display:none}.pane.active{display:block}
+label{display:block;color:var(--muted);font-size:12px;margin:14px 0 7px}input,textarea,select{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:12px;color:var(--text);padding:12px;font:inherit}textarea{min-height:86px;resize:vertical}.step{display:none}.step.active{display:block}.stepcount{font-size:11px;color:var(--muted);margin-bottom:9px}.prompt{font-size:22px;font-weight:800;margin:0 0 6px}.sub{color:var(--muted);line-height:1.45}.branches{display:grid;gap:10px;margin-top:15px}.branch{border:1px solid var(--line);background:#0d121a;border-radius:15px;padding:13px}.branch-row{display:grid;grid-template-columns:1fr 130px;gap:8px}.branch button{width:100%;margin-top:8px}.branch.selected{border-color:#6382b2;background:#121d2c}.locked{border:1px solid #3d6b51;background:#112219;padding:14px;border-radius:14px;margin-top:12px}.result-options{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}.choice{background:#111722;color:var(--muted);border:1px solid var(--line)}.choice.active{border-color:#6382b2;color:var(--text);background:#19253a}.section-title{font-size:18px;margin:0 0 5px}.evidence{margin-top:14px}.evidence details{border:1px solid var(--line);border-radius:14px;background:#0d121a;padding:12px}.evidence summary{cursor:pointer;font-weight:750}.dim{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}.metric{display:grid;grid-template-columns:1.4fr .8fr;gap:10px;align-items:end;margin-top:9px}.metric small{color:var(--muted);display:block;margin-top:3px}.history{display:grid;gap:9px}.hist{border:1px solid var(--line);border-radius:14px;padding:12px;background:#0d121a}.hist-head{display:flex;justify-content:space-between;gap:8px}.hist p{color:var(--muted);margin:7px 0 0;font-size:13px}.signal{font-size:12px;font-weight:800}.setup-note{padding:12px;border:1px solid #384861;background:#101a28;border-radius:13px;color:#c8d5e8}.saved{font-size:11px;color:var(--good);opacity:0;transition:.2s}.saved.show{opacity:1}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.chart{height:160px;width:100%;display:block;background:#0d121a;border:1px solid var(--line);border-radius:14px;margin-top:12px}
+.convergence-visual{position:relative;height:245px;margin:14px 0 4px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:radial-gradient(circle at 84% 43%,rgba(138,180,255,.16),transparent 28%),linear-gradient(180deg,#0d131d,#0a0f17)}
+.convergence-visual:before{content:"";position:absolute;left:9%;right:9%;top:64%;height:2px;background:linear-gradient(90deg,#334055,#4f6384,#8ab4ff);opacity:.85}.path-dot{position:absolute;top:calc(64% - 4px);width:8px;height:8px;border-radius:50%;background:#46536a;transform:translateX(-50%)}
+.person-wrap{position:absolute;top:34px;transform:translateX(-50%);text-align:center;transition:left .8s cubic-bezier(.2,.8,.2,1);z-index:2}.person{width:76px;height:112px;display:block;margin:auto;overflow:visible;filter:drop-shadow(0 7px 10px rgba(0,0,0,.35))}.person .bodyline{fill:none;stroke:currentColor;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}.person .headfill{fill:none;stroke:currentColor;stroke-width:3}.person-now .person{color:#7f90a8}.person-future .person{color:#b8d3ff}.avatar-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}.avatar-option{background:#0d121a;border:1px solid var(--line);color:var(--muted);border-radius:12px;padding:10px 8px;font-weight:800;cursor:pointer}.avatar-option.active{border-color:#7ea6e8;background:#172238;color:var(--text)}.person-now .person{opacity:.92}.person-future .person{width:86px;height:124px;filter:drop-shadow(0 0 18px rgba(138,180,255,.55)) drop-shadow(0 8px 12px rgba(0,0,0,.35))}.person-label{font-size:10px;font-weight:850;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-top:4px}.person-future .person-label{color:#c8dcff}.future-glow{position:absolute;width:160px;height:160px;border-radius:50%;right:2%;top:4px;background:radial-gradient(circle,rgba(138,180,255,.13),transparent 67%);filter:blur(2px)}
+.visual-score{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);text-align:center;z-index:3}.visual-score strong{font-size:31px;display:block;line-height:1}.visual-score span{font-size:12px;color:var(--muted);display:block;margin-top:5px}.visual-delta{font-size:12px!important;font-weight:800}.math-details{margin-top:12px}.math-details details{border:1px solid var(--line);border-radius:14px;background:#0d121a;padding:12px}.math-details summary{cursor:pointer;font-weight:800}.math-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.math-mini{border:1px solid var(--line);border-radius:12px;padding:10px;background:#0a0f17}.math-mini span{display:block;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}.math-mini strong{display:block;margin-top:5px;font-size:16px}.today-path{margin-top:13px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:#0d121a}.today-path .tiny{margin-bottom:4px;display:block}.today-path strong{font-size:15px}
+@media(max-width:600px){
+  body{background:#090c12}
+  .app{max-width:none;padding:12px 12px calc(78px + env(safe-area-inset-bottom))}
+  .top{align-items:center;flex-direction:row;min-height:38px}
+  .brand h1{font-size:22px;line-height:1}.brand p{display:none}
+  .top>div:last-child{margin-left:auto;display:flex;align-items:center;gap:6px}.top .secondary{padding:8px 10px;border-radius:10px;font-size:12px}
+  .card{border-radius:16px;margin-top:10px;padding:14px;box-shadow:none}.hero{padding:14px}
+  .eyebrow{font-size:9px;letter-spacing:.11em}.hero h2{font-size:21px;margin:5px 0 4px}.hero p{font-size:13px;line-height:1.35;margin:0 0 10px}
+  .convergence-visual{height:174px;margin:8px 0 10px;border-radius:16px}
+  .convergence-visual:before{left:11%;right:11%;top:59%}.path-dot{top:calc(59% - 3px);width:6px;height:6px}
+  .future-glow{width:110px;height:110px;right:1%;top:5px}
+  .person-wrap{top:18px}.person{width:50px;height:76px}.person-future .person{width:58px;height:84px}
+  .person-label{font-size:8px;margin-top:1px;letter-spacing:.08em;white-space:nowrap}.person-future .person-label{font-size:8px}
+  .visual-score{bottom:9px;width:70%}.visual-score strong{font-size:25px}.visual-score span{font-size:10px;margin-top:3px}.visual-delta{font-size:10px!important}
+  .primary.big{font-size:15px;padding:13px;border-radius:12px}
+  .today-path{margin-top:8px;padding:10px 11px;border-radius:12px}.today-path strong{font-size:13px;line-height:1.3;display:block}.today-path .tiny{font-size:9px}
+  .math-details{margin-top:8px}.math-details details{padding:9px 10px;border-radius:12px}.math-details summary{font-size:12px}.math-grid{grid-template-columns:repeat(3,1fr);gap:5px;margin-top:8px}.math-mini{padding:7px 6px;border-radius:9px}.math-mini span{font-size:8px}.math-mini strong{font-size:13px;margin-top:3px}
+  .stats{grid-template-columns:1fr 1fr}.stats .stat:last-child{grid-column:1/-1}.branch-row,.row,.metric{grid-template-columns:1fr}
+  .prompt{font-size:19px}.sub{font-size:13px}.branches{gap:8px;margin-top:10px}.branch{padding:10px;border-radius:12px}
+  input,textarea,select{padding:11px;border-radius:11px;font-size:16px}textarea{min-height:74px}label{margin:11px 0 6px}
+  .actions{gap:7px;margin-top:10px}.primary,.secondary,.ghost,.choice{padding:11px 12px;border-radius:11px}
+  .result-options{gap:6px}.choice{font-size:13px}
+  .nav{position:fixed;left:10px;right:10px;bottom:calc(8px + env(safe-area-inset-bottom));margin:0;padding:5px;border-radius:15px;z-index:20}.nav button{padding:9px 4px;font-size:11px;border-radius:10px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top"><div class="brand"><h1>Convergence</h1><p>Possibilities → chosen path → observation.</p></div><div><span id="saved" class="saved">Saved ✓</span> <button id="installBtn" class="secondary" style="display:none">Install</button></div></div>
+
+  <section id="home" class="pane active">
+    <div class="card hero">
+      <div class="eyebrow" id="phaseLabel">Today</div>
+      <h2 id="heroTitle">Ask Future Me</h2>
+      <p id="heroCopy">Choose today’s path, then watch yourself move toward D* over time.</p>
+
+      <div class="convergence-visual" aria-label="Visual convergence path from You Now to Future You">
+        <div class="future-glow"></div>
+        <span class="path-dot" style="left:25%"></span><span class="path-dot" style="left:42%"></span><span class="path-dot" style="left:59%"></span><span class="path-dot" style="left:76%"></span>
+        <div id="currentPerson" class="person-wrap person-now" style="left:10%">
+          <svg id="currentAvatar" class="person" viewBox="0 0 80 120" role="img" aria-label="You now"></svg>
+          <div class="person-label">You now</div>
+        </div>
+        <div class="person-wrap person-future" style="left:89%">
+          <svg id="futureAvatar" class="person" viewBox="0 0 80 120" role="img" aria-label="Future You"></svg>
+          <div class="person-label">Future You · D*</div>
+        </div>
+        <div class="visual-score"><strong id="convergence">—</strong><span id="visualMessage">Set your evidence to begin</span><span id="weeklyDelta" class="visual-delta"></span></div>
+      </div>
+
+      <button class="primary big" id="mainAction">Ask Future Me</button>
+      <div id="todayLocked"></div>
+
+      <div class="math-details"><details><summary>See the math</summary><div class="math-grid"><div class="math-mini"><span>Branch confidence</span><strong id="signalConfidence">50%</strong></div><div class="math-mini"><span>Trajectory</span><strong id="trajectory">No trend</strong></div><div class="math-mini"><span>Distance to D*</span><strong id="distanceValue">—</strong></div></div><p class="tiny" style="margin-top:10px">The visual position is calculated from your measurable D* evidence. Branch outcomes separately update the historical probability model.</p></details></div>
+    </div>
+  </section>
+
+  <section id="daily" class="pane">
+    <div class="card">
+      <div id="morningFlow">
+        <div class="step active" data-step="1"><div class="stepcount">1 of 3 · SEE</div><div class="prompt">See Future You.</div><p class="sub">Picture an ordinary day in the life-state you’re trying to reach. Don’t force an answer.</p><label>What stands out?</label><textarea id="vision" placeholder="A sentence or two is enough."></textarea><div class="actions"><button class="primary next" data-next="2">Continue</button></div></div>
+        <div class="step" data-step="2"><div class="stepcount">2 of 3 · BRANCHES</div><div class="prompt">What could you do today?</div><p class="sub">Enter up to three concrete paths. Keep them observable.</p><div id="branches" class="branches"></div><div class="actions"><button class="ghost back" data-back="1">Back</button><button class="primary next" data-next="3">Continue</button></div></div>
+        <div class="step" data-step="3"><div class="stepcount">3 of 3 · SELECT</div><div class="prompt">Which path feels most aligned?</div><p class="sub">Choose one. You’re not predicting the future; you’re selecting today’s trajectory.</p><div id="branchChoices" class="branches"></div><div class="actions"><button class="ghost back" data-back="2">Back</button></div></div>
+      </div>
+
+      <div id="eveningFlow" style="display:none">
+        <div class="step active"><div class="stepcount">OBSERVATION</div><div class="prompt">What happened?</div><p class="sub" id="eveningAction"></p>
+          <label>Did you do the selected action?</label><div class="result-options" id="doneChoices"><button class="choice" data-value="Yes">Yes</button><button class="choice" data-value="Partly">Partly</button><button class="choice" data-value="No">No</button></div>
+          <label>Overall observable outcome</label><div class="result-options" id="outcomeChoices"><button class="choice" data-value="Positive">Positive</button><button class="choice" data-value="Neutral">Neutral</button><button class="choice" data-value="Negative">Negative</button></div>
+          <label>What objectively happened?</label><textarea id="result" placeholder="Revenue, response, tester joined, task finished, obstacle found, family time protected, etc."></textarea>
+          <div class="evidence"><details><summary>Update measurable evidence (recommended)</summary><p class="tiny">These inputs calculate your D* convergence score. Only change what actually changed.</p><div id="metricInputs"></div></details></div>
+          <div class="actions"><button class="primary" id="saveObservation">Save observation</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="history" class="pane"><div class="card"><h2 class="section-title">Trajectory</h2><p class="sub">Distance to D* across evidence check-ins.</p><canvas id="chart" class="chart" width="700" height="160"></canvas></div><div class="card"><h2 class="section-title">Observed branches</h2><div id="historyList" class="history"></div></div></section>
+
+  <section id="setup" class="pane">
+    <div class="card"><h2 class="section-title">Future You · D*</h2><p class="sub">Describe the life-state once, then leave it reasonably stable while you run the experiment.</p><label>Your figure</label><div class="avatar-picker" id="avatarPicker"><button type="button" class="avatar-option" data-avatar="male">Man</button><button type="button" class="avatar-option" data-avatar="female">Woman</button><button type="button" class="avatar-option" data-avatar="neutral">Neutral</button></div><label>Future You</label><textarea id="futureDescription" placeholder="What is true about this version of you and the people you care about?"></textarea><div class="setup-note" style="margin-top:12px">The detailed evidence model is intentionally secondary. Targets define what counts as 10/10; your daily evidence determines the score.</div><div id="targetInputs"></div><div class="actions"><button class="primary" id="saveSetup">Save D*</button><button class="secondary" id="exportBtn">Export data</button></div></div>
+  </section>
+
+  <nav class="nav"><button class="active" data-pane="home">Today</button><button data-pane="daily">Daily</button><button data-pane="history">History</button><button data-pane="setup">D*</button></nav>
+</div>
+<script>
+const MODEL=[
+ {name:'Financial capacity',weight:1,metrics:[{id:'runway',name:'Liquid runway',unit:'months',target:12,help:'Months of essential expenses covered'},{id:'inflow',name:'Monthly cash inflow',unit:'$',target:10000,help:'Actual cash received / recurring inflow this month'},{id:'coverage',name:'Obligation coverage',unit:'%',target:150,help:'Income as % of essential monthly obligations'}]},
+ {name:'Family security',weight:1,metrics:[{id:'familyTime',name:'Present family time',unit:'min',target:90,help:'Undistracted time today'},{id:'commitments',name:'Commitments kept',unit:'%',target:100,help:'Family commitments kept today'},{id:'familyStability',name:'Stability check',unit:'0–10',target:9,help:'Safety, health support and household stability'}]},
+ {name:'Business traction',weight:1,metrics:[{id:'testers',name:'Active testers / users',unit:'count',target:25,help:'Currently active people using the product'},{id:'outreach',name:'Meaningful outreach',unit:'7 days',target:20,help:'Qualified outreach attempts in the last 7 days'},{id:'businessRevenue',name:'Monthly business revenue',unit:'$',target:10000,help:'Actual business revenue this month'},{id:'milestone',name:'Milestone progress',unit:'%',target:100,help:'Current milestone completion'}]},
+ {name:'Network / relationships',weight:1,metrics:[{id:'conversations',name:'Meaningful conversations',unit:'7 days',target:10,help:'Useful reciprocal conversations'},{id:'followups',name:'Important follow-ups completed',unit:'%',target:100,help:'Follow-ups you intended to complete'}]},
+ {name:'Physical energy',weight:1,metrics:[{id:'sleep',name:'Sleep',unit:'hours',target:8,help:'Last night'},{id:'exercise',name:'Movement / exercise',unit:'min',target:45,help:'Intentional movement today'},{id:'energy',name:'Energy',unit:'0–10',target:9,help:'Anchored subjective energy check'}]},
+ {name:'Personal agency',weight:1,metrics:[{id:'kept',name:'Promises to self kept',unit:'%',target:100,help:'Planned commitments actually completed'},{id:'hardThing',name:'Important hard thing done',unit:'0/1',target:1,help:'1 if you completed the day’s key hard action'}]},
+ {name:'Focus / discipline',weight:1,metrics:[{id:'deepWork',name:'Deep work',unit:'min',target:180,help:'Uninterrupted high-value work today'},{id:'priority',name:'Top priority completion',unit:'%',target:100,help:'Progress on the day’s highest priority'}]}
+];
+const KEY='convergence.v3', V2='convergence.v2';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const copy=o=>JSON.parse(JSON.stringify(o)); const today=()=>new Date().toLocaleDateString('en-CA');
+let deferredInstallPrompt=null, doneValue='', outcomeValue='';
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstallPrompt=e;$('#installBtn').style.display='inline-block'});
+function defaultState(){return{version:3,description:'',avatar:'male',model:copy(MODEL),latest:{},morning:null,history:[],branchStats:{}}}
+function load(){try{const v3=JSON.parse(localStorage.getItem(KEY));if(v3?.version===3){v3.avatar=v3.avatar||'male';return v3}}catch{};let s=defaultState();try{const old=JSON.parse(localStorage.getItem(V2));if(old){s.description=old.description||'';s.model=old.model||s.model;s.latest=old.latest||{};s.morning=old.morning||null;s.history=(old.history||[]).map(h=>({...h,legacyV2:true}));}}catch{}return s}
+let state=load();
+function save(){localStorage.setItem(KEY,JSON.stringify(state));$('#saved').classList.add('show');setTimeout(()=>$('#saved').classList.remove('show'),900)}
+function metricScore(v,t){v=Number(v);return !Number.isFinite(v)||v<0||!t?0:Math.max(0,Math.min(10,10*v/t))}
+function dimensionScores(values=state.latest){return state.model.map(d=>d.metrics.reduce((s,m)=>s+metricScore(values[m.id]??0,m.target),0)/d.metrics.length)}
+function calc(values=state.latest){const ds=dimensionScores(values),w=state.model.map(d=>Number(d.weight)||1),sq=ds.reduce((s,v,i)=>s+w[i]*(10-v)**2,0),max=w.reduce((s,x)=>s+x*100,0);const distance=Math.sqrt(sq),convergence=Math.max(0,1-distance/Math.sqrt(max));return{ds,distance,convergence}}
+function scoredHistory(){return state.history.filter(h=>Number.isFinite(h.convergence))}
+function branchProb(cat){const x=state.branchStats[cat]||{a:1,b:1};return x.a/(x.a+x.b)}
+function updateBranch(cat,success){const x=state.branchStats[cat]||{a:1,b:1};success?x.a++:x.b++;state.branchStats[cat]=x}
+function signalConfidence(){let a=1,b=1;Object.values(state.branchStats).forEach(x=>{a+=x.a-1;b+=x.b-1});return a/(a+b)}
+function esc(s=''){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function avatarMarkup(kind){
+ if(kind==='female')return `<circle class="headfill" cx="40" cy="17" r="8"/><path class="bodyline" d="M35 27 Q40 25 45 27 M34 29 Q31 40 32 52 Q33 61 28 72 M46 29 Q49 40 48 52 Q47 61 52 72 M32 49 Q40 54 48 49 M34 30 L22 58 M46 30 L58 58 M28 72 L24 109 M52 72 L56 109 M28 72 Q40 66 52 72"/><path class="bodyline" d="M34 26 Q36 20 40 20 Q44 20 46 26" style="stroke-width:2.2;opacity:.8"/>`;
+ if(kind==='neutral')return `<circle class="headfill" cx="40" cy="17" r="8"/><path class="bodyline" d="M34 28 Q40 25 46 28 M34 29 L31 63 M46 29 L49 63 M31 43 L20 64 M49 43 L60 64 M31 63 L28 109 M49 63 L52 109 M31 63 Q40 66 49 63"/>`;
+ return `<circle class="headfill" cx="40" cy="17" r="8"/><path class="bodyline" d="M32 29 Q40 25 48 29 M32 30 L29 64 M48 30 L51 64 M31 38 L18 62 M49 38 L62 62 M29 64 L25 109 M51 64 L55 109 M29 64 Q40 68 51 64"/><path class="bodyline" d="M32 30 Q40 34 48 30" style="stroke-width:2.2;opacity:.75"/>`;
+}
+function renderAvatar(){const kind=state.avatar||'male';const a=$('#currentAvatar'),b=$('#futureAvatar');if(a)a.innerHTML=avatarMarkup(kind);if(b)b.innerHTML=avatarMarkup(kind);$$('.avatar-option').forEach(x=>x.classList.toggle('active',x.dataset.avatar===kind))}
+
+function classify(text=''){const t=text.toLowerCase();if(/wife|son|family|mom|dad|home/.test(t))return'Family';if(/money|revenue|invoice|sale|fund|cash|bitcoin|invest/.test(t))return'Money';if(/call|message|email|outreach|invite|follow/.test(t))return'Reach';if(/build|code|ship|product|app|beta|write|create/.test(t))return'Build';if(/walk|gym|exercise|sleep|health|rest/.test(t))return'Health';return'Other'}
+function showPane(id){$$('.pane').forEach(p=>p.classList.toggle('active',p.id===id));$$('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.pane===id));if(id==='daily')renderDaily();if(id==='history')renderHistory();}
+$$('.nav button').forEach(b=>b.onclick=()=>showPane(b.dataset.pane));
+function renderHome(){
+ const m=state.morning,locked=m?.date===today()&&m.locked,observed=state.history.some(h=>h.date===today()&&!h.legacyV2),hasEvidence=Object.keys(state.latest).length>0,c=calc();
+ const pct=hasEvidence?c.convergence*100:null;
+ $('#convergence').textContent=pct!==null?pct.toFixed(0)+'%':'—';
+ $('#distanceValue').textContent=hasEvidence?c.distance.toFixed(1):'—';
+ $('#signalConfidence').textContent=(signalConfidence()*100).toFixed(0)+'%';
+ const currentLeft=pct===null?10:Math.max(10,Math.min(84,10+(pct/100)*74));
+ $('#currentPerson').style.left=currentLeft+'%';
+ const hist=scoredHistory();
+ let delta=null;
+ if(hist.length>1){delta=(hist.at(-1).convergence-hist.at(-2).convergence)*100;$('#trajectory').textContent=delta>.2?'Converging ↑':delta<-.2?'Drifting ↓':'Flat →';$('#trajectory').className=delta>.2?'good':delta<-.2?'bad':'warn'}else{$('#trajectory').textContent='No trend';$('#trajectory').className=''}
+ $('#weeklyDelta').textContent=delta===null?'':`${delta>=0?'+':''}${delta.toFixed(1)}% since last check-in`;
+ $('#weeklyDelta').className='visual-delta '+(delta>0?'good':delta<0?'bad':'warn');
+ $('#visualMessage').textContent=pct===null?'Add measurable evidence to place You Now':pct>=95?'Almost at D*':pct>=75?'You’re getting close':pct>=50?'You’re moving toward D*':'Keep moving toward D*';
+ if(!locked){$('#phaseLabel').textContent='MORNING · CHOOSE YOUR PATH';$('#heroTitle').textContent='Ask Future Me';$('#heroCopy').textContent='See D*, choose today’s path, and let the evidence move you closer.';$('#mainAction').textContent='Ask Future Me';$('#mainAction').onclick=()=>{showPane('daily');startStep(1)};$('#todayLocked').innerHTML=''}
+ else if(!observed){$('#phaseLabel').textContent='TODAY · YOUR PATH';$('#heroTitle').textContent='Stay on today’s branch';$('#heroCopy').textContent='Do the selected action. Record what happened tonight.';$('#mainAction').textContent='Observe Today';$('#mainAction').onclick=()=>{showPane('daily');renderDaily(true)};$('#todayLocked').innerHTML=`<div class="today-path"><span class="tiny">TODAY’S PATH · ${esc(m.category)}</span><strong>${esc(m.action)}</strong></div>`}
+ else{$('#phaseLabel').textContent='TODAY · RECORDED';$('#heroTitle').textContent='Today is observed';$('#heroCopy').textContent='Your action and outcome are recorded. The next evidence check-in moves your position.';$('#mainAction').textContent='View History';$('#mainAction').onclick=()=>showPane('history');$('#todayLocked').innerHTML=''}
+}
+function branchInputs(){return [0,1,2].map(i=>`<div class="branch"><div class="branch-row"><input class="branchText" data-i="${i}" placeholder="${i===0?'Most likely useful action':'Another possible path'}"><select class="branchCat" data-i="${i}"><option>Auto</option><option>Build</option><option>Reach</option><option>Money</option><option>Family</option><option>Health</option><option>Other</option></select></div></div>`).join('')}
+function startStep(n){$('#morningFlow').style.display='block';$('#eveningFlow').style.display='none';$$('#morningFlow .step').forEach(s=>s.classList.toggle('active',+s.dataset.step===n));if(n===2&&!$('#branches').children.length)$('#branches').innerHTML=branchInputs();if(n===3)renderChoices()}
+$$('.next').forEach(b=>b.onclick=()=>startStep(+b.dataset.next));$$('.back').forEach(b=>b.onclick=()=>startStep(+b.dataset.back));
+function renderChoices(){const items=$$('.branchText').map((x,i)=>({text:x.value.trim(),cat:$$('.branchCat')[i].value})).filter(x=>x.text);$('#branchChoices').innerHTML=items.length?items.map((x,i)=>{const cat=x.cat==='Auto'?classify(x.text):x.cat;return`<div class="branch"><div class="tiny">${cat} · prior ${(branchProb(cat)*100).toFixed(0)}%</div><strong>${esc(x.text)}</strong><button class="primary chooseBranch" data-i="${i}">Choose this path</button></div>`}).join(''):'<div class="sub">Go back and enter at least one concrete action.</div>';$$('.chooseBranch').forEach((b)=>b.onclick=()=>{const x=items[+b.dataset.i],cat=x.cat==='Auto'?classify(x.text):x.cat;state.morning={date:today(),vision:$('#vision').value.trim(),action:x.text,category:cat,locked:true};save();renderAll();showPane('home')})}
+function renderMetricInputs(){let html='';state.model.forEach(d=>{html+=`<div class="dim"><strong>${d.name}</strong>`;d.metrics.forEach(m=>{html+=`<div class="metric"><div>${m.name}<small>${m.help}</small></div><input class="metricValue" data-id="${m.id}" type="number" min="0" step="any" placeholder="${m.unit}" value="${state.latest[m.id]??''}"></div>`});html+='</div>'});$('#metricInputs').innerHTML=html}
+function renderDaily(forceEvening=false){const m=state.morning,locked=m?.date===today()&&m.locked;if(forceEvening||locked){$('#morningFlow').style.display='none';$('#eveningFlow').style.display='block';$('#eveningAction').innerHTML=`Selected path: <strong>${esc(m?.action||'')}</strong>`;renderMetricInputs()}else{startStep(1);$('#vision').value=''}}
+$$('#doneChoices .choice').forEach(b=>b.onclick=()=>{doneValue=b.dataset.value;$$('#doneChoices .choice').forEach(x=>x.classList.toggle('active',x===b))});$$('#outcomeChoices .choice').forEach(b=>b.onclick=()=>{outcomeValue=b.dataset.value;$$('#outcomeChoices .choice').forEach(x=>x.classList.toggle('active',x===b))});
+$('#saveObservation').onclick=()=>{const m=state.morning;if(!m?.locked)return;$$('.metricValue').forEach(x=>{if(x.value!=='')state.latest[x.dataset.id]=Math.max(0,Number(x.value)||0)});const c=calc(),success=(doneValue==='Yes'||doneValue==='Partly')&&outcomeValue==='Positive';if(outcomeValue)updateBranch(m.category,success);const entry={date:today(),action:m.action,category:m.category,vision:m.vision,done:doneValue,outcome:outcomeValue,result:$('#result').value.trim(),values:copy(state.latest),convergence:c.convergence,distance:c.distance,branchProbability:branchProb(m.category)};const i=state.history.findIndex(h=>h.date===today()&&!h.legacyV2);i>=0?state.history[i]=entry:state.history.push(entry);state.history.sort((a,b)=>(a.date||'').localeCompare(b.date||''));save();doneValue='';outcomeValue='';renderAll();showPane('home')}
+function renderSetup(){$('#futureDescription').value=state.description||'';renderAvatar();let html='';state.model.forEach((d,di)=>{html+=`<div class="dim"><strong>${d.name}</strong>`;d.metrics.forEach((m,mi)=>{html+=`<div class="metric"><div>${m.name}<small>10/10 target · ${m.unit}</small></div><input class="metricTarget" data-di="${di}" data-mi="${mi}" type="number" min="0.01" step="any" value="${m.target}"></div>`});html+='</div>'});$('#targetInputs').innerHTML=html}
+$$('.avatar-option').forEach(b=>b.onclick=()=>{state.avatar=b.dataset.avatar;save();renderAvatar()});
+$('#saveSetup').onclick=()=>{state.description=$('#futureDescription').value.trim();$$('.metricTarget').forEach(x=>state.model[+x.dataset.di].metrics[+x.dataset.mi].target=Math.max(.01,Number(x.value)||.01));save();renderAll();showPane('home')};
+function renderHistory(){const hist=state.history.slice().reverse();$('#historyList').innerHTML=hist.length?hist.map(h=>`<div class="hist"><div class="hist-head"><strong>${esc(h.date||'')}</strong><span class="signal ${h.outcome==='Positive'?'good':h.outcome==='Negative'?'bad':'warn'}">${esc(h.outcome|| (h.legacyV2?'Legacy':'—'))}</span></div><div style="margin-top:6px">${esc(h.action||'Check-in')}</div><p>${esc(h.result||'')}</p>${Number.isFinite(h.convergence)?`<p>Convergence ${(h.convergence*100).toFixed(1)}%${h.category?` · ${esc(h.category)} branch ${(h.branchProbability*100).toFixed(0)}%`:''}</p>`:''}</div>`).join(''):'<div class="sub">No observations yet.</div>';drawChart(scoredHistory())}
+function drawChart(hist){const c=$('#chart'),ctx=c.getContext('2d'),w=c.width,h=c.height;ctx.clearRect(0,0,w,h);ctx.strokeStyle='#293241';ctx.lineWidth=1;for(let y=25;y<h;y+=35){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke()}if(hist.length<2)return;ctx.strokeStyle='#8ab4ff';ctx.lineWidth=3;ctx.beginPath();hist.forEach((e,i)=>{const x=20+i*(w-40)/(hist.length-1),y=15+(1-e.convergence)*(h-30);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.stroke()}
+$('#installBtn').onclick=async()=>{if(deferredInstallPrompt){deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;$('#installBtn').style.display='none'}};
+$('#exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='convergence-'+today()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)};
+function renderAll(){renderAvatar();renderHome();renderSetup();renderHistory()}renderAll();
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script>
+</body></html>
